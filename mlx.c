@@ -20,8 +20,9 @@ void		help_display(t_mlx *mlx, unsigned c)
 	mlx_string_put(mlx->mlx, mlx->win, x, x, c, "Map:");
 	mlx_string_put(mlx->mlx, mlx->win, x + 46, x, c, mlx->name);
 	mlx_string_put(mlx->mlx, mlx->win, x, x + 40, c, "Controls:");
-	mlx_string_put(mlx->mlx, mlx->win, x, x + 60, c, "Translate: [W][A][S][D]");
-	mlx_string_put(mlx->mlx, mlx->win, x, x + 80, c, "Rotate: Arrow Keys");
+	mlx_string_put(mlx->mlx, mlx->win, x, x + 60, c, "Rotate: [W][A]\
+	[S][D][Q][E]");
+	mlx_string_put(mlx->mlx, mlx->win, x, x + 80, c, "Tranlate: Arrow Keys");
 	mlx_string_put(mlx->mlx, mlx->win, x, x + 100, c, "Depth: [9]/[0]");
 	mlx_string_put(mlx->mlx, mlx->win, x, x + 120, c, "Zoom: [=]/[-]");
 	mlx_string_put(mlx->mlx, mlx->win, x, x + 140, c, "Projection: Spacebar");
@@ -40,11 +41,11 @@ static void	reset(t_mlx *mlx)
 
 static int	fdf_keys1(int keycode, t_mlx *mlx)
 {
-	if (keycode == KEY_S)
+	if (keycode == D_ARR)
 		mlx->add_y += mlx->starty / 10;
-	if (keycode == KEY_A)
+	if (keycode == L_ARR)
 		mlx->add_x -= mlx->startx / 10;
-	if (keycode == KEY_D)
+	if (keycode == R_ARR)
 		mlx->add_x += mlx->startx / 10;
 	if (keycode == KEY_MINUS && mlx->cam->zoom > 0)
 		mlx->cam->zoom *= 0.9;
@@ -65,21 +66,21 @@ static int	fdf_keys(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 		exit(0);
-	if (keycode == D_ARR)
+	if (keycode == KEY_S)
 		mlx->cam->alpha += (0.2617993878 / 4);
-	if (keycode == U_ARR)
+	if (keycode == KEY_W)
 		mlx->cam->alpha -= (0.2617993878 / 4);
-	if (keycode == L_ARR)
+	if (keycode == KEY_A)
 		mlx->cam->beta -= (0.2617993878 / 4);
-	if (keycode == R_ARR)
+	if (keycode == KEY_D)
 		mlx->cam->beta += (0.2617993878 / 4);
 	if (keycode == KEY_R)
 		reset(mlx);
-	if (keycode == L_SQUARE)
+	if (keycode == KEY_Q)
 		mlx->cam->gamma += (0.2617993878 / 4);
-	if (keycode == R_SQUARE)
+	if (keycode == KEY_E)
 		mlx->cam->gamma -= (0.2617993878 / 4);
-	if (keycode == KEY_W)
+	if (keycode == U_ARR)
 		mlx->add_y -= mlx->starty / 10;
 	return (fdf_keys1(keycode, mlx));
 }

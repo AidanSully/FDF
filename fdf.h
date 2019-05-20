@@ -25,12 +25,11 @@
 # define U_ARR 126
 # define L_ARR 123
 # define R_ARR 124
-# define M_CLICK 1
-# define SCR_UP 4
-# define SCR_DWN 5
 # define L_SQUARE 33
 # define R_SQUARE 30
 # define SPACE 49
+# define KEY_Q 12
+# define KEY_E 14
 
 # include "libft/includes/get_next_line.h"
 # include "libft/includes/libft.h"
